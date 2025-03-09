@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SenterosAI - Умный ИИ-ассистент | Чат-бот с искусственным интеллектом</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SenterosAI - дружелюбный ИИ-ассистент для общения и помощи. Получайте ответы на вопросы, помощь в работе и творческие идеи.">
+    <meta name="keywords" content="ИИ ассистент, чат-бот, искусственный интеллект, AI помощник, умный чат, онлайн помощник">
+    <meta name="author" content="Slavik">
+    <meta name="robots" content="index, follow">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SenterosAI">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#7c3aed">
+    <link rel="manifest" href="/static/manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="https://i.ibb.co/QFHLqXGM/logo-removebg-preview-1.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://i.ibb.co/QFHLqXGM/logo-removebg-preview-1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/QFHLqXGM/logo-removebg-preview-1.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://i.ibb.co/QFHLqXGM/logo-removebg-preview-1.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/QFHLqXGM/logo-removebg-preview-1.png">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SenterosAI - Умный ИИ-ассистент">
+    <meta property="og:description" content="Общайтесь с дружелюбным ИИ-ассистентом. Получайте умные ответы и помощь в решении задач.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://senterosai.vercel.app/">
+    <meta property="og:image" content="https://i.ibb.co/QFHLqXGM/logo-removebg-preview-1.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/modern-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Blur overlay for settings -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="container">
+        <!-- Semantic Header -->
+        <header role="banner">
+            <div class="logo">
+                <h1>SenterosAI</h1>
+                <p>Ваш дружелюбный ИИ-ассистент</p>
+            </div>
+            <div class="header-controls">
+                <button id="toggle-sidebar-btn" class="header-btn" aria-label="Переключить боковую панель">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button id="settings-btn" class="header-btn" aria-label="Открыть настройки">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settings-panel" role="dialog" aria-label="Настройки">
+            <button id="close-settings-btn" class="close-settings-btn" aria-label="Закрыть настройки">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="settings-group">
+                <h4>Язык / Language</h4>
+                <div class="settings-option">
+                    <input type="radio" id="lang-ru" name="language" value="ru" checked>
+                    <label for="lang-ru">Русский</label>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="lang-en" name="language" value="en">
+                    <label for="lang-en">English</label>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="lang-es" name="language" value="es">
+                    <label for="lang-es">Español</label>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="lang-de" name="language" value="de">
+                    <label for="lang-de">Deutsch</label>
+                </div>
+            </div>
+            <div class="settings-group">
+                <h4>Тема / Theme</h4>
+                <div class="settings-option">
+                    <input type="radio" id="theme-light" name="theme" value="light" checked>
+                    <label for="theme-light">Светлая / Light</label>
+                </div>
+                <div class="settings-option">
+                    <input type="radio" id="theme-dark" name="theme" value="dark">
+                    <label for="theme-dark">Темная / Dark</label>
+                </div>
+            </div>
+            <div class="settings-group">
+                <h4>Настройки чата</h4>
+                <div class="settings-option">
+                    <input type="checkbox" id="auto-scroll" name="auto-scroll" checked>
+                    <label for="auto-scroll">Автопрокрутка к новым сообщениям</label>
+                </div>
+                <div class="settings-option">
+                    <input type="checkbox" id="sound-notifications" name="sound-notifications" checked>
+                    <label for="sound-notifications">Звуковые уведомления</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <main role="main">
+            <nav class="chat-sidebar" id="chat-sidebar" aria-label="История чатов">
+                <div class="sidebar-header">
+                    <h3>История чатов</h3>
+                    <button id="new-chat-btn" class="new-chat-btn" aria-label="Создать новый чат">
+                        <i class="fas fa-plus"></i> Новый чат
+                    </button>
+                </div>
+                <div class="chat-list" id="chat-list" role="list">
+                    <!-- Chat history items will be added here -->
+                </div>
+            </nav>
+            
+            <section class="chat-container" aria-label="Чат с ассистентом">
+                <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+                    <div class="message bot">
+                        <p>Привет! Я SenterosAI, ваш дружелюбный ассистент! (●'◡'●) Чем я могу вам помочь сегодня?</p>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <div class="image-upload-container" id="image-preview-container" style="display: none;">
+                        <div class="image-preview" id="image-preview" role="img" aria-label="Предпросмотр загруженного изображения"></div>
+                        <button class="remove-image-btn" id="remove-image-btn" aria-label="Удалить изображение">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="input-group" role="form">
+                        <input type="text" id="user-input" placeholder="Введите ваше сообщение..." autocomplete="off" aria-label="Введите сообщение">
+                        <button id="image-upload-btn" class="input-button" aria-label="Загрузить изображение">
+                            <i class="fas fa-image"></i>
+                        </button>
+                        <input type="file" id="image-upload" accept="image/*" style="display: none;" aria-label="Выберите изображение">
+                        <button id="send-btn" class="input-button" aria-label="Отправить сообщение">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Semantic Footer -->
+        <footer role="contentinfo">
+            <p>&copy; 2025 Slavik</p>
+        </footer>
+        
+        <!-- Application Scripts -->
+        <script src="/static/js/translations.js"></script>
+        <script src="/static/js/markdown-chat.js"></script>
+        <script src="/static/js/script.js" defer></script>
+        
+        <!-- Service Worker Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/static/js/service-worker.js')
+                        .then(registration => {
+                            console.log('ServiceWorker registration successful');
+                        })
+                        .catch(error => {
+                            console.log('ServiceWorker registration failed:', error);
+                        });
+                });
+            }
+            
+            // Add to homescreen prompt handler
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                
+                // Show your custom "Add to Home Screen" button or banner here
+                // For example:
+                const addToHomeBtn = document.createElement('button');
+                addToHomeBtn.textContent = 'Добавить на главный экран';
+                addToHomeBtn.classList.add('add-to-home-btn');
+                addToHomeBtn.addEventListener('click', (e) => {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the A2HS prompt');
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+                
+                // Add the button to your UI
+                document.body.appendChild(addToHomeBtn);
+            });
+        </script>
+    </div>
+</body>
+</html>

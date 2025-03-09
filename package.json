@@ -1,0 +1,18 @@
+{
+  "name": "senteros-ai",
+  "version": "1.0.0",
+  "description": "SenterosAI - Smart AI Assistant powered by Gemini 2.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.3.1",
+    "body-parser": "^1.20.2"
+  }
+}
